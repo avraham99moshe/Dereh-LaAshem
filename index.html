@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дерех ла-Шем – Путь к Всевышнему</title>
+<meta name="description" content="Дерех ла-Шем – тёплое и уважительное место для каждого еврея, который хочет вернуться к корням: книги, сайты, слова мудрецов и первые шаги.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Manrope:wght@300;400;500;700&family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b3560; --navy-dark:#12254a; --gold:#c9973f; --gold-light:#e8c680;
+    --bg:#fbf9f4; --card:#ffffff; --text:#25304a; --muted:#6b7488; --line:#ece6d8;
+    --radius:20px; --shadow:0 10px 30px rgba(27,53,96,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:17px}
+  h1,h2,h3{font-family:'Playfair Display',serif;color:var(--navy);line-height:1.25}
+  a{color:inherit;text-decoration:none}
+  .container{width:min(1120px,92%);margin-inline:auto}
+  .he{font-family:'Frank Ruhl Libre',serif;direction:rtl}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,249,244,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:var(--navy)}
+  .brand img,.brand .logo-svg{height:54px;width:54px;object-fit:contain}
+  nav ul{display:flex;gap:4px;list-style:none}
+  nav a{padding:8px 14px;border-radius:999px;font-weight:500;font-size:.95rem;transition:.25s}
+  nav a:hover{background:var(--navy);color:#fff}
+  .menu-btn{display:none;background:none;border:0;font-size:1.8rem;color:var(--navy);cursor:pointer}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;text-align:center;padding:60px 0 100px;
+    background:radial-gradient(900px 400px at 50% -10%,rgba(201,151,63,.22),transparent 70%),
+               linear-gradient(180deg,#fff 0%,var(--bg) 100%)}
+  .hero .logo-wrap{width:min(320px,66vw);margin-inline:auto;animation:float 6s ease-in-out infinite}
+  .hero .logo-wrap img,.hero .logo-wrap .logo-svg{width:100%;height:auto;display:block}
+  @keyframes float{50%{transform:translateY(-8px)}}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.6rem);margin-top:6px;font-weight:900}
+  .hero h1 span{color:var(--gold)}
+  .hero p.lead{max-width:700px;margin:16px auto 30px;font-size:1.15rem;color:var(--muted)}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 30px;border-radius:999px;font-weight:700;transition:.25s;border:2px solid var(--navy);cursor:pointer;font-family:inherit;font-size:1rem}
+  .btn.primary{background:linear-gradient(135deg,var(--navy),#2b4f8f);color:#fff;border-color:transparent;box-shadow:0 8px 20px rgba(27,53,96,.25)}
+  .btn.primary:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(27,53,96,.32)}
+  .btn.ghost{color:var(--navy);background:transparent}
+  .btn.ghost:hover{background:var(--navy);color:#fff}
+
+  /* ---------- Sections ---------- */
+  section{padding:80px 0}
+  .sec-head{text-align:center;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900}
+  .sec-head .bar{width:90px;height:4px;border-radius:4px;margin:14px auto;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+  .sec-head p{color:var(--muted);max-width:640px;margin-inline:auto}
+  .alt{background:#fff;border-block:1px solid var(--line)}
+
+  /* ---------- Quote of the day ---------- */
+  .quote-box{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:#fff;border-radius:28px;padding:44px 34px;text-align:center;box-shadow:var(--shadow);position:relative;margin-top:-56px;z-index:5}
+  .quote-box small{color:var(--gold-light);letter-spacing:.5px;font-weight:500}
+  .quote-box blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.8vw,1.9rem);margin:12px 0;font-weight:700}
+  .quote-box cite{color:var(--gold-light);font-style:normal}
+  .quote-box button{margin-top:18px;background:transparent;border:1.5px solid var(--gold-light);color:var(--gold-light);padding:8px 22px;border-radius:999px;cursor:pointer;font-family:inherit;transition:.25s}
+  .quote-box button:hover{background:var(--gold-light);color:var(--navy-dark)}
+
+  /* ---------- Steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px 24px 26px;box-shadow:var(--shadow);position:relative;transition:.3s}
+  .step:hover{transform:translateY(-6px)}
+  .step .num{position:absolute;top:-18px;left:22px;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#fff;font-weight:700;display:grid;place-items:center;font-size:1.1rem}
+  .step h3{margin:8px 0;font-size:1.25rem}
+  .step p{color:var(--muted);font-size:.97rem}
+
+  /* ---------- Filters ---------- */
+  .tools{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
+  .tools input{padding:12px 20px;border-radius:999px;border:1.5px solid var(--line);font-family:inherit;font-size:1rem;min-width:280px;background:#fff;outline:none;transition:.25s}
+  .tools input:focus{border-color:var(--gold)}
+  .chip{padding:9px 20px;border-radius:999px;background:#fff;border:1.5px solid var(--line);cursor:pointer;font-family:inherit;font-size:.93rem;transition:.25s;color:var(--text)}
+  .chip:hover{border-color:var(--gold)}
+  .chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  /* ---------- Cards grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.3s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(27,53,96,.14)}
+  .card .tag{font-size:.78rem;color:var(--gold);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+  .card h3{font-size:1.25rem;margin-bottom:2px}
+  .card .heb{font-size:1.05rem;color:var(--muted);margin-bottom:4px}
+  .card .author{font-size:.88rem;color:var(--muted);margin-bottom:10px}
+  .card p{font-size:.95rem;flex:1}
+  .card .go{margin-top:16px;font-weight:700;color:var(--navy);display:inline-flex;gap:6px;align-items:center}
+  .card .go::after{content:"→";transition:.25s}
+  .card:hover .go::after{transform:translateX(5px)}
+  .empty{text-align:center;color:var(--muted);padding:30px;display:none}
+
+  /* ---------- Sages ---------- */
+  .chazal{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px}
+  .ch{background:var(--card);border-radius:var(--radius);padding:30px;border-left:5px solid var(--gold);box-shadow:var(--shadow)}
+  .ch .orig{font-size:1.25rem;color:var(--gold);margin-bottom:8px;font-weight:700}
+  .ch blockquote{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);font-weight:700;margin-bottom:10px}
+  .ch .src{color:var(--gold);font-weight:700;font-size:.88rem}
+  .ch p{color:var(--muted);margin:8px 0 12px;font-size:.96rem}
+  .ch a.more{color:var(--navy);font-weight:700;font-size:.93rem;border-bottom:2px solid var(--gold-light)}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:800px;margin-inline:auto}
+  details{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:14px;padding:4px 22px;box-shadow:var(--shadow)}
+  summary{cursor:pointer;font-weight:700;padding:16px 0;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.6rem;color:var(--gold);transition:.25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{padding-bottom:18px;color:var(--muted)}
+
+  /* ---------- Contact ---------- */
+  .contact{max-width:620px;margin-inline:auto;background:#fff;border-radius:var(--radius);padding:36px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .contact label{display:block;font-weight:500;margin:14px 0 6px}
+  .contact input,.contact textarea{width:100%;padding:13px 16px;border-radius:14px;border:1.5px solid var(--line);font-family:inherit;font-size:1rem;outline:none;background:var(--bg)}
+  .contact input:focus,.contact textarea:focus{border-color:var(--gold)}
+  .contact button{margin-top:22px;width:100%}
+  #thanks{display:none;text-align:center;color:var(--navy);font-weight:700;margin-top:16px}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-dark);color:#cfd7ea;text-align:center;padding:44px 0 30px}
+  footer .brand{justify-content:center;color:#fff;margin-bottom:10px}
+  footer .brand img,footer .brand .logo-svg{height:64px;width:64px;background:#fff;border-radius:14px;padding:4px}
+  footer small{display:block;margin-top:18px;opacity:.7}
+  .top-btn{position:fixed;bottom:22px;right:22px;width:46px;height:46px;border-radius:50%;background:var(--gold);color:#fff;border:0;font-size:1.4rem;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:.3s}
+  .top-btn.show{opacity:1;pointer-events:auto}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:.7s}
+  .reveal.visible{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .menu-btn{display:block}
+    nav ul{position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:12px 4%;border-bottom:1px solid var(--line);display:none}
+    nav ul.open{display:flex}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- Запасной вариант логотипа (показывается, если файла logo.png нет рядом с index.html) -->
+<template id="logoSvg">
+<svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Дерех ла-Шем">
+  <defs>
+    <linearGradient id="gRoad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#1b3560"/><stop offset="1" stop-color="#d9ab57"/>
+    </linearGradient>
+  </defs>
+  <path d="M88 150V96a62 62 0 0 1 124 0v54" fill="none" stroke="#c9973f" stroke-width="7" stroke-linecap="round"/>
+  <g stroke="#c9973f" stroke-width="2" stroke-linecap="round">
+    <line x1="150" y1="62" x2="150" y2="108"/><line x1="122" y1="85" x2="178" y2="85" transform="rotate(0)"/>
+    <line x1="130" y1="68" x2="170" y2="102"/><line x1="170" y1="68" x2="130" y2="102"/>
+  </g>
+  <circle cx="150" cy="85" r="4" fill="#c9973f"/>
+  <path d="M108 222C170 214 205 190 160 160C134 142 148 124 150 114L160 114C166 130 176 140 194 158C226 190 196 222 176 224Z" fill="url(#gRoad)"/>
+  <path d="M132 214C165 204 182 188 156 168" fill="none" stroke="#fff" stroke-width="3" opacity=".7"/>
+  <text x="150" y="272" text-anchor="middle" font-family="Frank Ruhl Libre, serif" font-size="34" font-weight="900" fill="#1b3560" direction="rtl">דרך להשם</text>
+</svg>
+</template>
+
+<!-- ============ Header ============ -->
+<header>
+  <div class="container nav">
+    <a href="#top" class="brand">
+      <img class="logo-img" src="logo.png" alt="Логотип Дерех ла-Шем">
+      <span>Дерех ла-Шем</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Меню">☰</button>
+    <nav>
+      <ul id="menu">
+        <li><a href="#steps">Первые шаги</a></li>
+        <li><a href="#books">Книги</a></li>
+        <li><a href="#sites">Сайты</a></li>
+        <li><a href="#chazal">Слова мудрецов</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<div class="hero" id="top">
+  <div class="container">
+    <div class="logo-wrap"><img class="logo-img" src="logo.png" alt="Дерех ла-Шем"></div>
+    <h1>Путь к <span>Всевышнему</span></h1>
+    <p class="lead">Любой еврей может вернуться домой. Здесь вы найдёте книги, сайты и слова мудрецов, которые помогут пройти этот путь шаг за шагом – спокойно, уважительно и без давления.</p>
+    <div class="btns">
+      <a class="btn primary" href="#steps">Начать путь</a>
+      <a class="btn ghost" href="#books">Список книг</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Quote of the day ============ -->
+<div class="container">
+  <div class="quote-box reveal">
+    <small>✦ СЛОВО НА СЕГОДНЯ ✦</small>
+    <blockquote id="qText"></blockquote>
+    <cite id="qSrc"></cite><br>
+    <button id="qBtn">Ещё одно</button>
+  </div>
+</div>
+
+<!-- ============ Steps ============ -->
+<section id="steps">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Первые шаги</h2><div class="bar"></div>
+      <p>Не нужно менять всё за один день. Путь строится постепенно – по маленькому шагу.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Одно небольшое решение</h3><p>Выберите что-то одно: благословение с намерением, зажигание субботних свечей или минута молитвы. Малое, но постоянное лучше большого, которое быстро ломается.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>Постоянное время для учёбы</h3><p>Пятнадцать минут в день с хорошей книгой. Начните с коротких книг о вере и нравственности, которые говорят с сердцем.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>Раввин и наставник</h3><p>Найдите раввина или партнёра по учёбе, у которого можно спросить совета. Каждому нужен проводник на пути.</p></div>
+      <div class="step reveal"><div class="num">4</div><h3>Тёплая община</h3><p>Одна суббота в гостях у семьи или урок в ближайшей синагоге часто меняют всё.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Books ============ -->
+<section id="books" class="alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Книги для чтения</h2><div class="bar"></div>
+      <p>Нажмите на книгу, чтобы открыть её и читать онлайн на русском языке.</p>
+    </div>
+    <div class="tools reveal">
+      <input type="search" id="bookSearch" placeholder="🔍 Поиск книги...">
+    </div>
+    <div class="tools reveal" id="bookFilters"></div>
+    <div class="grid" id="booksGrid"></div>
+    <div class="empty" id="booksEmpty">Ничего не найдено. Попробуйте другой запрос.</div>
+  </div>
+</section>
+
+<!-- ============ Sites ============ -->
+<section id="sites">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Рекомендуемые сайты</h2><div class="bar"></div>
+      <p>Уроки, статьи, галаха и поддержка – всё в одном месте. Ссылки открываются в новой вкладке.</p>
+    </div>
+    <div class="grid" id="sitesGrid"></div>
+  </div>
+</section>
+
+<!-- ============ Sages ============ -->
+<section id="chazal" class="alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Слова мудрецов о возвращении</h2><div class="bar"></div>
+      <p>Что говорили мудрецы Талмуда о силе тшувы. Нажмите «Читать в источнике», чтобы продолжить изучение.</p>
+    </div>
+    <div class="chazal" id="chazalGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Частые вопросы</h2><div class="bar"></div>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Я чувствую, что слишком далёк. Есть ли у меня шанс?</summary>
+        <p>Конечно. Мудрецы учили, что ни перед одним евреем не закрыта дверь, а на месте, где стоят вернувшиеся, не могут стоять даже совершенные праведники. Каждый, даже самый маленький шаг имеет значение.</p></details>
+      <details><summary>С чего начать?</summary>
+        <p>С одного небольшого дела, которое приятно выполнять, и с короткой книги или урока, который вам откликается. Потом добавляйте понемногу и советуйтесь с раввином или наставником.</p></details>
+      <details><summary>Семья и друзья меня не понимают. Что делать?</summary>
+        <p>Спокойно и уважительно. Берегите мир в семье, показывайте, что возвращение делает вас лучше, и дайте близким время. Важно также найти вокруг себя поддерживающих людей.</p></details>
+      <details><summary>Я спотыкаюсь и снова откатываюсь назад. Значит, я потерпел неудачу?</summary>
+        <p>Нет. «Семь раз упадёт праведник и встанет» – главное в том, что он встаёт. Падения бывают на любом пути, а важно то, что вы идёте дальше.</p></details>
+      <details><summary>Как найти раввина или партнёра по учёбе?</summary>
+        <p>Обратитесь в ближайшую синагогу, ешиву или центр для возвращающихся к традиции в вашем городе, либо напишите нам через форму внизу страницы.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Contact ============ -->
+<section id="contact" class="alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Связаться с нами</h2><div class="bar"></div>
+      <p>Вопрос, просьба о наставнике или предложение по улучшению сайта – мы будем рады услышать вас.</p>
+    </div>
+    <form class="contact reveal" id="contactForm">
+      <label for="n">Имя</label><input id="n" required>
+      <label for="e">Email или телефон</label><input id="e" required>
+      <label for="m">Сообщение</label><textarea id="m" rows="4" required></textarea>
+      <button class="btn primary" type="submit">Отправить</button>
+      <div id="thanks">Спасибо! Ваше сообщение получено 🙏</div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="container">
+    <div class="brand"><img class="logo-img" src="logo.png" alt=""><span>Дерех ла-Шем</span></div>
+    <p>«Вернитесь ко Мне, и Я вернусь к вам» (Малахи 3:7)</p>
+    <small>© <span id="yr"></span> Дерех ла-Шем. Все права защищены.</small>
+  </div>
+</footer>
+
+<button class="top-btn" id="topBtn" aria-label="Наверх">↑</button>
+
+<script>
+/* ===================== Данные – можно свободно редактировать ===================== */
+
+// Ссылка на чтение книги на сайте Sefaria (поиск по названию на иврите)
+const sefaria = name => 'https://www.sefaria.org/search?q=' + encodeURIComponent(name);
+
+const books = [
+  // --- Тора и Танах ---
+  {t:'Тора с комментарием Раши', c:'Тора и Танах', u:'https://toldot.com/limud/library/humash/bereshit/bereshit/', d:'Книга Берешит с классическим комментарием Раши – хороший способ начать изучение Торы.'},
+  {t:'Свиток Эстер', c:'Тора и Танах', u:'https://toldot.com/limud/library/ktuvim/megilot/ester/', d:'История праздника Пурим, которую читают в синагоге в Пурим.'},
+  {t:'Песнь Песней', c:'Тора и Танах', u:'https://toldot.com/articles/articles_14323.html', d:'Книга о любви Всевышнего к еврейскому народу.'},
+  {t:'Свиток Эйха – плач Ирмеягу', c:'Тора и Танах', u:'https://toldot.com/articles/articles_15646.html', d:'Плач о разрушении Храма, который читают в Тиша б-Ав.'},
+
+  // --- Галаха и практика ---
+  {t:'Кицур Шульхан Арух', c:'Галаха и практика', u:'https://toldot.com/cycles/cycles_302.html', d:'Законы еврейской жизни кратко и понятно. Хорошая отправная точка для соблюдения заповедей.'},
+  {t:'Хаей Адам', c:'Галаха и практика', u:'https://beerot.online/category/%d1%81%d1%82%d0%b0%d1%82%d1%8c%d0%b8/%d0%b5%d0%b2%d1%80%d0%b5%d0%b9%d1%81%d0%ba%d0%b8%d0%b9-%d0%b7%d0%b0%d0%ba%d0%be%d0%bd-%d0%b0%d0%bb%d0%b0%d1%85%d0%b0/%d1%85%d0%b0%d0%b5%d0%b9-%d0%b0%d0%b4%d0%b0%d0%bc-%d0%b5%d0%b2%d1%80%d0%b5%d0%b9%d1%81%d0%ba%d0%b8%d0%b9-%d0%b7%d0%b0%d0%ba%d0%be%d0%bd-%d0%b0%d0%bb%d0%b0%d1%85%d0%b0/', d:'Классическое руководство по еврейскому закону на каждый день.'},
+  {t:'Береги свою речь', c:'Галаха и практика', u:'https://toldot.com/articles/articles_580.html', d:'О законах охраны речи и о том, как не говорить дурного о людях.'},
+  {t:'Не вари козлёнка в молоке его матери', c:'Галаха и практика', u:'https://toldot.com/cycles/cycles_149.html', d:'Законы кашрута: разделение мясного и молочного.'},
+  {t:'Орхот Шаббат («Пути субботы»)', c:'Галаха и практика', u:'orhot_shabat.html', d:'Практическая книга по законам субботы.'},
+  {t:'Законы благословений', c:'Галаха и практика', u:'zakony_blagosloveniy_5_glav.html', d:'Законы благословений: что и когда говорить перед едой и после неё.'},
+  {t:'Законы мяса и молока', c:'Галаха и практика', u:'basar_vechalav.html', d:'Законы кашрута о запрете смешивать мясное и молочное.'},
+
+  // --- Мишна и мидраш ---
+  {t:'Мишна', c:'Мишна и мидраш', u:'https://toldot.com/cycles/talmud/?razdel=356', d:'Основа Устной Торы – законы еврейской жизни в кратком изложении.'},
+  {t:'Пиркей де-рабби Элиэзер', c:'Мишна и мидраш', u:'https://toldot.com/articles/articles_32592.html', d:'Древний мидраш о событиях от сотворения мира и далее.'},
+  {t:'Мидраш рассказывает', c:'Мишна и мидраш', u:'https://toldot.com/cycles/cycles_177.html', d:'Рассказы мудрецов, которые помогают глубже понять недельную главу.'},
+
+  // --- Нравственность и вера ---
+  {t:'Месилат Йешарим («Путь праведных»)', c:'Нравственность и вера', u:'https://toldot.com/articles/articles_30596.html', d:'Полное руководство по работе над характером – от осторожности до святости.'},
+  {t:'Ховот ха-Левавот («Обязанности сердец») – Врата 3: Врата служения Всевышнему', c:'Нравственность и вера', u:'hovot_halevavot.html', d:'Третьи врата книги Рабейну Бахьи: о служении Всевышнему.'},
+  {t:'Нефеш а-Хаим («Душа жизни»)', c:'Нравственность и вера', u:'https://toldot.com/articles/articles_34290.html', d:'О значении человеческих поступков и о силе Торы и молитвы.'},
+  {t:'Томер Двора («Пальма Деворы»)', c:'Нравственность и вера', u:'https://toldot.com/articles/articles_37.html', d:'О том, как подражать качествам Всевышнего в отношениях с людьми.'},
+  {t:'Зрелище очей («Махазе Эйнаим»)', c:'Нравственность и вера', u:'mahaze_eynaim.html', d:'Книга о важности оберегания глаз от запретных зрелищ и о борьбе с дурным началом.'},
+
+  // --- Мудрецы и наследие ---
+  {t:'Так поступали наши мудрецы', c:'Мудрецы и наследие', u:'http://www.istok.ru/library/58-tak-postupali-nashi-mudretsy.html', d:'Рассказы о том, как вели себя наши мудрецы и чему у них можно научиться.'},
+  {t:'Книга нашего наследия', c:'Мудрецы и наследие', u:'https://toldot.com/cycles/cycles_128.html', d:'Материалы о еврейской традиции и наследии наших предков.'}
+];
+
+const sites = [
+  {t:'Sefaria', u:'https://www.sefaria.org', c:'Библиотека', d:'Тысячи священных книг бесплатно: Танах, Мишна, Талмуд, мидраши. Многое есть с переводом.'},
+  {t:'Толдот', u:'https://toldot.ru', c:'Статьи и уроки', d:'Русскоязычный сайт об иудаизме: статьи, лекции и ответы на вопросы.'},
+  {t:'Лехаим', u:'https://lechaim.ru', c:'Журнал', d:'Журнал о еврейской культуре, истории и традиции на русском языке.'},
+  {t:'Маханаим', u:'https://www.machanaim.org', c:'Образование', d:'Русскоязычная еврейская образовательная организация: курсы, семинары и материалы.'},
+  {t:'Chassidus.ru', u:'https://www.chassidus.ru', c:'Хасидизм', d:'Хасидские тексты и уроки на русском языке.'},
+  {t:'Chabad.org', u:'https://www.chabad.org', c:'Учёба и практика', d:'Ежедневная учёба, хасидизм, галаха, недельная глава и время зажигания свечей.'},
+  {t:'Aish', u:'https://www.aish.com', c:'Статьи', d:'Статьи о вере и мировоззрении для тех, кто только начинает путь (на английском).'},
+  {t:'TorahAnytime', u:'https://www.torahanytime.com', c:'Видео и аудио', d:'Большая библиотека видео и аудио уроков от разных раввинов. Удобно слушать в дороге.'}
+];
+
+const chazal = [
+  {he:'במקום שבעלי תשובה עומדין, צדיקים גמורין אינן עומדין.', q:'На месте, где стоят вернувшиеся, совершенные праведники стоять не могут.', s:'Брахот 34б', d:'Ступень того, кто вернулся, особенно высока – ведь он приложил огромные усилия, чтобы её достичь.', n:'ברכות לד'},
+  {he:'גדולה תשובה, שמגעת עד כסא הכבוד.', q:'Велика тшува: она достигает Престола Славы.', s:'Йома 86а', d:'Нет такого расстояния, которое тшува не смогла бы преодолеть.', n:'יומא פו'},
+  {he:'גדולה תשובה, שזדונות נעשות לו כזכויות.', q:'Велика тшува: умышленные проступки становятся для него заслугами.', s:'Йома 86б', d:'Когда возвращаются с любовью, даже прошлое становится частью подъёма.', n:'יומא פו'},
+  {he:'פתחו לי פתח כחודו של מחט, ואני אפתח לכם כפתחו של אולם.', q:'Откройте Мне отверстие размером с игольное ушко, и Я открою вам врата, как вход в зал.', s:'Шир а-Ширим Рабба 5:2', d:'Всевышний просит у нас лишь начала – и Сам открывает широкую дверь.', n:'שיר השירים רבה ה'},
+  {he:'לא עליך המלאכה לגמור, ואי אתה בן חורין להיבטל ממנה.', q:'Не на тебе лежит обязанность завершить работу, но и освободиться от неё ты не вправе.', s:'Пиркей Авот 2:16', d:'Не нужно достигать совершенства сразу. Важно продолжать делать.', n:'פרקי אבות ב'},
+  {he:'אל תאמן בעצמך עד יום מותך.', q:'Не доверяй самому себе до дня своей смерти.', s:'Пиркей Авот 2:4', d:'Напоминание о скромности и самодисциплине: всегда есть куда расти.', n:'פרקי אבות ב'},
+  {he:'איזוהי דרך ישרה שיבור לו האדם? כל שהיא תפארת לעושיה ותפארת לו מן האדם.', q:'Какой путь правильный? Тот, что украшает идущего по нему и приносит ему почёт от людей.', s:'Пиркей Авот 2:1', d:'Верный путь радует Всевышнего и людей.', n:'פרקי אבות ב'},
+  {he:'שבע יפול צדיק וקם.', q:'Семь раз упадёт праведник и встанет.', s:'Мишлей 24:16', d:'Падение – не конец истории. Праведником делает того, кто встаёт снова и снова.', n:'משלי כד'}
+];
+
+const verses = [
+  {t:'Вернитесь ко Мне, и Я вернусь к вам', s:'Малахи 3:7'},
+  {t:'Близок Господь ко всем, кто взывает к Нему, ко всем, кто взывает к Нему искренне', s:'Тегилим 145:18'},
+  {t:'Возврати нас, Господи, к Себе, и мы вернёмся; обнови дни наши, как прежде', s:'Эйха 5:21'},
+  {t:'Семь раз упадёт праведник и встанет', s:'Мишлей 24:16'},
+  {t:'Не на тебе лежит обязанность завершить работу', s:'Пиркей Авот 2:16'},
+  {t:'Очисти наши сердца, чтобы служить Тебе искренне', s:'Из молитвы'}
+];
+
+/* ===================== Код ===================== */
+const $ = s => document.querySelector(s);
+
+// Логотип: если logo.png не найден – показываем встроенный вариант
+function swapLogo(img){
+  if (img.dataset.swapped) return;
+  img.dataset.swapped = '1';
+  img.replaceWith($('#logoSvg').content.cloneNode(true));
+}
+document.querySelectorAll('img.logo-img').forEach(img => {
+  if (img.complete && img.naturalWidth === 0) swapLogo(img);
+  else img.addEventListener('error', () => swapLogo(img));
+});
+
+// Книги
+const cats = ['Все', ...new Set(books.map(b => b.c))];
+let activeCat = 'Все';
+const filtersEl = $('#bookFilters');
+cats.forEach(c => {
+  const b = document.createElement('button');
+  b.className = 'chip' + (c === 'Все' ? ' active' : '');
+  b.textContent = c;
+  b.onclick = () => { activeCat = c; document.querySelectorAll('#bookFilters .chip').forEach(x => x.classList.toggle('active', x === b)); renderBooks(); };
+  filtersEl.appendChild(b);
+});
+function renderBooks(){
+  const q = $('#bookSearch').value.trim().toLowerCase();
+  const list = books.filter(b => (activeCat === 'Все' || b.c === activeCat) && (b.t + b.d + b.c).toLowerCase().includes(q));
+  $('#booksGrid').innerHTML = list.map(b => `
+    <a class="card" href="${b.u}" target="_blank" rel="noopener">
+      <div class="tag">${b.c}</div><h3>${b.t}</h3>
+      <p>${b.d}</p><span class="go">Читать</span>
+    </a>`).join('');
+  $('#booksEmpty').style.display = list.length ? 'none' : 'block';
+}
+$('#bookSearch').addEventListener('input', renderBooks);
+renderBooks();
+
+// Сайты
+$('#sitesGrid').innerHTML = sites.map(s => `
+  <a class="card" href="${s.u}" target="_blank" rel="noopener">
+    <div class="tag">${s.c}</div><h3>${s.t}</h3><p>${s.d}</p><span class="go">Перейти на сайт</span>
+  </a>`).join('');
+
+// Мудрецы
+$('#chazalGrid').innerHTML = chazal.map(c => `
+  <div class="ch reveal">
+    <div class="orig he">${c.he}</div>
+    <blockquote>«${c.q}»</blockquote>
+    <div class="src">${c.s}</div>
+    <p>${c.d}</p>
+    <a class="more" href="${sefaria(c.n)}" target="_blank" rel="noopener">Читать в источнике →</a>
+  </div>`).join('');
+
+// Стих дня
+let vi = new Date().getDate() % verses.length;
+function showVerse(){ $('#qText').textContent = '«' + verses[vi].t + '»'; $('#qSrc').textContent = verses[vi].s; }
+$('#qBtn').onclick = () => { vi = (vi + 1) % verses.length; showVerse(); };
+showVerse();
+
+// Мобильное меню
+$('#menuBtn').onclick = () => $('#menu').classList.toggle('open');
+document.querySelectorAll('#menu a').forEach(a => a.onclick = () => $('#menu').classList.remove('open'));
+
+// Форма (демо – можно подключить к Formspree / Google Forms)
+$('#contactForm').addEventListener('submit', e => { e.preventDefault(); $('#thanks').style.display = 'block'; e.target.reset(); });
+
+// Наверх + анимация появления
+const topBtn = $('#topBtn');
+addEventListener('scroll', () => topBtn.classList.toggle('show', scrollY > 600));
+topBtn.onclick = () => scrollTo({top:0});
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } }), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+$('#yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
