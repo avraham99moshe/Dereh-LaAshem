@@ -138,6 +138,28 @@
     nav ul.open{display:flex}
     section{padding:60px 0}
   }
+
+  /* ---------- Videos ---------- */
+  .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+  .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.3s;text-align:left;font-family:inherit;padding:0;display:flex;flex-direction:column}
+  .vcard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(27,53,96,.14)}
+  .vthumb{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy-dark),var(--navy));display:grid;place-items:center}
+  .vthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vplay{position:relative;width:60px;height:60px;border-radius:50%;background:rgba(201,151,63,.95);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:.25s}
+  .vplay::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+  .vcard:hover .vplay{transform:scale(1.1)}
+  .vbody{padding:18px 20px 20px}
+  .vbody .tag{font-size:.78rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .vbody h3{font-size:1.15rem;margin:4px 0}
+  .vbody p{font-size:.93rem;color:var(--muted)}
+  .vsoon{grid-column:1/-1;text-align:center;color:var(--muted);padding:34px;background:var(--card);border:1.5px dashed var(--gold-light);border-radius:var(--radius)}
+  .modal{position:fixed;inset:0;z-index:100;background:rgba(10,20,40,.82);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .modal-in{width:min(900px,100%);position:relative}
+  .modal-frame{aspect-ratio:16/9;width:100%;background:#000;border-radius:16px;overflow:hidden}
+  .modal-frame iframe,.modal-frame video{width:100%;height:100%;border:0}
+  .modal-title{color:#fff;margin-top:12px;font-weight:700}
+  .modal-close{position:absolute;top:-44px;right:0;background:none;border:0;color:#fff;font-size:2rem;cursor:pointer}
 </style>
 </head>
 <body>
@@ -174,6 +196,7 @@
       <ul id="menu">
         <li><a href="#steps">Первые шаги</a></li>
         <li><a href="#books">Книги</a></li>
+        <li><a href="#videos">Видео</a></li>
         <li><a href="#sites">Сайты</a></li>
         <li><a href="#chazal">Слова мудрецов</a></li>
         <li><a href="#faq">Вопросы</a></li>
@@ -237,6 +260,26 @@
     <div class="empty" id="booksEmpty">Ничего не найдено. Попробуйте другой запрос.</div>
   </div>
 </section>
+
+<!-- ============ Videos ============ -->
+<section id="videos">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Видеоуроки</h2><div class="bar"></div>
+      <p>Уроки и лекции, которые можно смотреть прямо на сайте. Нажмите на видео, чтобы начать просмотр.</p>
+    </div>
+    <div class="tools reveal" id="videoFilters"></div>
+    <div class="vgrid" id="videosGrid"></div>
+  </div>
+</section>
+
+<div class="modal" id="videoModal" aria-hidden="true">
+  <div class="modal-in">
+    <button class="modal-close" id="videoClose" aria-label="Закрыть">×</button>
+    <div class="modal-frame" id="videoFrame"></div>
+    <div class="modal-title" id="videoTitle"></div>
+  </div>
+</div>
 
 <!-- ============ Sites ============ -->
 <section id="sites">
@@ -354,6 +397,13 @@ const books = [
   {t:'Книга нашего наследия', c:'Мудрецы и наследие', u:'https://toldot.com/cycles/cycles_128.html', d:'Материалы о еврейской традиции и наследии наших предков.'}
 ];
 
+// Видео. Как добавить:
+//  - YouTube:        {t:'Название', c:'Тема', yt:'ID_видео', d:'Описание'}   (ID – это часть после v= в ссылке)
+//  - Файл на сайте:  {t:'Название', c:'Тема', file:'lesson1.mp4', d:'Описание'}
+const videos = [
+  {t:'Сила суда в пользу другого', c:'Межличностные отношения', file:'Coinhalfshekel-Subt.mp4', d:'Видео о силе того, чтобы судить другого человека в лучшую сторону.'}
+];
+
 const sites = [
   {t:'Sefaria', u:'https://www.sefaria.org', c:'Библиотека', d:'Тысячи священных книг бесплатно: Танах, Мишна, Талмуд, мидраши. Многое есть с переводом.'},
   {t:'Толдот', u:'https://toldot.ru', c:'Статьи и уроки', d:'Русскоязычный сайт об иудаизме: статьи, лекции и ответы на вопросы.'},
@@ -422,6 +472,49 @@ function renderBooks(){
 }
 $('#bookSearch').addEventListener('input', renderBooks);
 renderBooks();
+
+// Видео
+const vcats = ['Все', ...new Set(videos.map(v => v.c))];
+let vActive = 'Все';
+function renderVideos(){
+  const list = videos.filter(v => vActive === 'Все' || v.c === vActive);
+  if (!videos.length){
+    $('#videosGrid').innerHTML = '<div class="vsoon">Видеоуроки скоро появятся здесь.</div>';
+    return;
+  }
+  $('#videosGrid').innerHTML = list.map(v => {
+    const i = videos.indexOf(v);
+    const thumb = v.yt ? `<img loading="lazy" src="https://i.ytimg.com/vi/${v.yt}/hqdefault.jpg" alt="">` : '';
+    return `<button class="vcard" data-i="${i}">
+      <div class="vthumb">${thumb}<div class="vplay"></div></div>
+      <div class="vbody"><div class="tag">${v.c}</div><h3>${v.t}</h3><p>${v.d || ''}</p></div>
+    </button>`;
+  }).join('');
+}
+if (videos.length){
+  vcats.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (c === 'Все' ? ' active' : '');
+    b.textContent = c;
+    b.onclick = () => { vActive = c; document.querySelectorAll('#videoFilters .chip').forEach(x => x.classList.toggle('active', x === b)); renderVideos(); };
+    $('#videoFilters').appendChild(b);
+  });
+}
+renderVideos();
+const vModal = $('#videoModal');
+function closeVideo(){ vModal.classList.remove('open'); $('#videoFrame').innerHTML = ''; }
+$('#videosGrid').addEventListener('click', e => {
+  const card = e.target.closest('.vcard'); if (!card) return;
+  const v = videos[card.dataset.i];
+  $('#videoFrame').innerHTML = v.yt
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`
+    : `<video src="${v.file}" controls autoplay></video>`;
+  $('#videoTitle').textContent = v.t;
+  vModal.classList.add('open');
+});
+$('#videoClose').onclick = closeVideo;
+vModal.addEventListener('click', e => { if (e.target === vModal) closeVideo(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
 
 // Сайты
 $('#sitesGrid').innerHTML = sites.map(s => `
