@@ -399,9 +399,15 @@ const books = [
 
 // Видео. Как добавить:
 //  - YouTube:        {t:'Название', c:'Тема', yt:'ID_видео', d:'Описание'}   (ID – это часть после v= в ссылке)
+//  - Google Drive:   {t:'Название', c:'Тема', drive:'ID_файла', d:'Описание'}   (ID – часть между /d/ и /view в ссылке; доступ к файлу должен быть «для всех, у кого есть ссылка»)
 //  - Файл на сайте:  {t:'Название', c:'Тема', file:'lesson1.mp4', d:'Описание'}
 const videos = [
-  {t:'Сила суда в пользу другого', c:'Межличностные отношения', file:'Coinhalfshekel-Subt.mp4', d:'Видео о силе того, чтобы судить другого человека в лучшую сторону.'}
+  {t:'О том как важно оправдывать другого', c:'Межличностные отношения', file:'Coinhalfshekel-Subt.mp4', d:'Видео о силе того, чтобы судить другого человека в лучшую сторону.'},
+  {t:'Шалом байт – мир в семье', c:'Шалом байт (мир в семье)', drive:'1hhmgYXZ5YhaKxOfzJdwY1CXy5Z6AQZRU', d:'Видео о мире в семье и о том, как его сохранять.'},
+  {t:'Как важно прислушиваться к словам раввина: история о бедняке, купившем долю в Будущем мире за одну монетку', c:'Вера и доверие', drive:'1l12q0IKwijH3B8ovILN-_xVpxd2e6SGV', d:'Видео о том, как бедняк, прислушавшись к словам раввина и выполнив его совет, удостоился богатства.'},
+  {t:'Всё, что делает Всевышний, – к лучшему', c:'Вера и доверие', drive:'1PtfRrqyLzdlYqSOeXS0eBxkuUSsrPkdT', d:'Видео о том, что всё происходящее с нами – от Всевышнего и к добру.'},
+  {t:'Как молитва спасла жизнь', c:'Молитва', drive:'1NS6XVxw5rPaHuoeTJhNRx71FxgqS5s3F', d:'Рассказ о том, как молитва спасла человеку жизнь.'},
+  {t:'Мы – дети Всевышнего: у Него можно просить всё', c:'Вера и доверие', drive:'1DJEF8x2fwUlOJATojHPh8QNsmbBMh7R4', d:'Притча о том, что мы – дети Всевышнего и можем просить у Него всё, что нам нужно.'}
 ];
 
 const sites = [
@@ -508,6 +514,8 @@ $('#videosGrid').addEventListener('click', e => {
   const v = videos[card.dataset.i];
   $('#videoFrame').innerHTML = v.yt
     ? `<iframe src="https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`
+    : v.drive
+    ? `<iframe src="https://drive.google.com/file/d/${v.drive}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`
     : `<video src="${v.file}" controls autoplay></video>`;
   $('#videoTitle').textContent = v.t;
   vModal.classList.add('open');
