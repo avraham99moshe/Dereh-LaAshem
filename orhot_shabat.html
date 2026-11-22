@@ -5,6 +5,16 @@ const chapters=[{"title": "Мелаха «Бишуль» (приготовлен
 const content=document.getElementById('content'),nav=document.getElementById('nav'),sidebar=document.getElementById('sidebar'),panel=document.getElementById('subpanel'),search=document.getElementById('search'),count=document.getElementById('count');
 let index=0,size=19,query='',marks=[],matchIndex=-1;
 function show(i,keep=false){index=Math.max(0,Math.min(chapters.length-1,i));const c=chapters[index];content.innerHTML=c.body;
+// The chapter name is already shown in the standalone chapter heading above the text.
+// Remove only matching headings at the beginning of the chapter body.
+const cleanTitle=t=>t.replace(/\s+/g,' ').trim().toLocaleLowerCase('ru');
+for(const el of Array.from(content.children)){
+ if(!/^H[1-4]$/.test(el.tagName))break;
+ const heading=cleanTitle(el.textContent);
+ if(heading===cleanTitle(c.title)||/^глава\s+\d+$/i.test(heading))el.remove();
+ else break;
+}
+
 const extraSubheadings=new Set([
 'Строительство предметов (бине́н бе-келим)',
 'Сборка предметов путём плотного закрепления',
