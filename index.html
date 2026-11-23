@@ -333,11 +333,12 @@
       <h2>Связаться с нами</h2><div class="bar"></div>
       <p>Вопрос, просьба о наставнике или предложение по улучшению сайта – мы будем рады услышать вас.</p>
     </div>
-    <form class="contact reveal" id="contactForm">
-      <label for="n">Имя</label><input id="n" required>
-      <label for="e">Email или телефон</label><input id="e" required>
-      <label for="m">Сообщение</label><textarea id="m" rows="4" required></textarea>
+    <form class="contact reveal" id="contactForm" action="https://formspree.io/f/mdegpkjb" method="POST">
+      <label for="n">Имя</label><input id="n" name="name" required>
+      <label for="e">Email или телефон</label><input id="e" name="contact" required>
+      <label for="m">Сообщение</label><textarea id="m" name="message" rows="4" required></textarea>
       <button class="btn primary" type="submit">Отправить</button>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div id="thanks">Спасибо! Ваше сообщение получено 🙏</div>
     </form>
   </div>
@@ -546,7 +547,22 @@ $('#menuBtn').onclick = () => $('#menu').classList.toggle('open');
 document.querySelectorAll('#menu a').forEach(a => a.onclick = () => $('#menu').classList.remove('open'));
 
 // Форма (демо – можно подключить к Formspree / Google Forms)
-$('#contactForm').addEventListener('submit', e => { e.preventDefault(); $('#thanks').style.display = 'block'; e.target.reset(); });
+$('#contactForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, btn = f.querySelector('button[type=submit]'), msg = $('#thanks');
+  btn.disabled = true; btn.textContent = 'Отправка...';
+  try {
+    const r = await fetch(f.action, {method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}});
+    if (!r.ok) throw new Error();
+    msg.textContent = 'Спасибо! Ваше сообщение получено 🙏';
+    msg.style.color = ''; f.reset();
+  } catch (err) {
+    msg.textContent = 'Не удалось отправить сообщение. Пожалуйста, попробуйте ещё раз позже.';
+    msg.style.color = '#b3261e';
+  }
+  msg.style.display = 'block';
+  btn.disabled = false; btn.textContent = 'Отправить';
+});
 
 // Наверх + анимация появления
 const topBtn = $('#topBtn');
