@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avraham99moshe.github.io/Dereh-LaAshem/sitemap.xml
