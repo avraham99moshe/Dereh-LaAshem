@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Любовь и Шхина</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--paper:#fffdf8;--ink:#26232b;--muted:#6d6872;--line:#e6dcc8;--accent:#2d2a6e;--gold:#b8892b;--gold-soft:#f3e7c9;--hl:#fbefc9}
+@media(prefers-color-scheme:dark){:root{--bg:#15141c;--paper:#1d1c27;--ink:#ece8df;--muted:#a29cab;--line:#322f42;--accent:#b9b6ff;--gold:#e0b45a;--gold-soft:#3a3322;--hl:#463c1f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Lora',Georgia,serif;line-height:1.8;font-size:1.12rem;
+ background-image:radial-gradient(circle at 50% -10%,var(--gold-soft),transparent 55%)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 80px}
+header{text-align:center;padding:64px 0 28px}
+.eyebrow{font-family:'Inter',sans-serif;letter-spacing:.18em;font-size:.78rem;color:var(--gold);font-weight:700;text-transform:uppercase}
+h1{font-weight:700;font-size:clamp(2rem,6vw,3.3rem);margin:.3em 0 .3em;color:var(--accent);line-height:1.15}
+.src{display:inline-block;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--muted);border:1px solid var(--line);background:var(--paper);padding:5px 16px;border-radius:999px}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px auto 0;color:var(--gold)}
+.orn:before,.orn:after{content:"";height:1px;width:80px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn:after{transform:scaleX(-1)}
+article{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,5vw,48px);box-shadow:0 1px 2px rgba(60,40,10,.06),0 12px 32px rgba(60,40,10,.07)}
+p{margin:0 0 1.15em}
+strong{background:linear-gradient(transparent 58%,var(--hl) 58%);font-weight:700;color:var(--accent)}
+em{color:var(--accent)}
+.lead{font-size:1.05em}
+blockquote{margin:1.6em 0;padding:18px 22px;border-inline-start:4px solid var(--gold);background:var(--gold-soft);border-radius:0 14px 14px 0;font-size:1.18rem;font-weight:500;color:var(--ink)}
+blockquote strong{background:none;color:inherit}
+.cite{font-family:'Inter',sans-serif;font-size:.82em;color:var(--gold);background:var(--gold-soft);padding:1px 8px;border-radius:8px;white-space:nowrap}
+ul{padding-inline-start:1.3em;margin:0 0 1.15em}li{margin:.4em 0}li::marker{color:var(--gold)}
+blockquote{font-style:italic}
+h2{font-family:'Lora',serif;font-size:1.55rem;color:var(--accent);margin:2.2em 0 .7em;padding-bottom:.35em;border-bottom:2px solid var(--gold-soft);line-height:1.3}
+h2:first-child{margin-top:0}
+h3{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:1.8em 0 .6em;line-height:1.5;font-weight:700}
+ol{padding-inline-start:1.4em;margin:0 0 1.15em}ol li::marker{color:var(--gold);font-weight:700}
+h2:after{content:"";flex:1;height:1px;background:var(--line)}
+.box{border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:0 0 1.15em;background:color-mix(in srgb,var(--paper) 70%,var(--gold-soft))}
+.box p:last-child{margin:0}
+@media print{body{background:#fff}article{box-shadow:none;border:0}}
+.bsd{font-family:"Frank Ruhl Libre",serif;color:var(--gold);font-size:1.1rem;text-align:center;margin-bottom:8px}
+.stage{position:relative;margin:0 0 18px;padding:20px 22px 18px 74px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--paper) 70%,var(--gold-soft))}
+.stage .k{position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:700;color:var(--accent);background:var(--gold-soft);border:1px solid var(--gold)}
+.stage h3{margin:0 0 .5em}
+.stage p{margin:0 0 .7em}.stage p:last-child{margin:0}
+.stage blockquote{margin:.6em 0}
+.stage .meta{font-size:.95rem;color:var(--muted)}
+.rail{display:grid;gap:0}
+.stage + .stage::before{content:"";position:absolute;left:38px;top:-18px;height:18px;border-left:2px dashed var(--gold)}
+.talk{margin:0 0 1.2em;padding-inline-start:18px;border-inline-start:3px solid var(--line)}
+.talk .who{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.3em}
+.talk p{margin:0 0 .6em}
+.key{margin:1.6em 0;padding:20px 24px;border-radius:14px;background:var(--gold-soft);border:1px solid var(--gold)}
+.key p:last-child{margin:0}
+@media(max-width:520px){.stage{padding-left:64px}.stage .k{left:14px}.stage + .stage::before{left:32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="bsd" lang="he" dir="rtl">בס"ד</div>
+ <div class="eyebrow">Талмуд · Санхедрин 7а</div>
+ <h1>Любовь и Шхина</h1>
+ <span class="src">Талмуд, Санхедрин 7а</span>
+ <div class="orn">✦</div>
+</header>
+<article>
+<h2>Любовь, которая вмещалась на лезвии меча</h2>
+<div class="talk"><div class="who">Один человек говорил</div>
+<blockquote>«Когда любовь между мной и моей женой была сильна, даже на узком лезвии меча мы могли спать вместе <em>(гиперболическое выражение, подчёркивающее близость)</em>.</blockquote>
+<blockquote>Теперь же, когда наша любовь ослабла, даже кровати шириной в шестьдесят локтей (примерно 30 метров) нам не хватает».</blockquote></div>
+<div class="talk"><div class="who">Сказал Рав Гуна</div>
+<p>Это подтверждается стихами из Писания. Ту же картину мы видим в отношениях между Всевышним и Израилем.</p></div>
+
+<h2>Три этапа</h2>
+<div class="rail">
+<section class="stage"><span class="k">1</span>
+<h3>Любовь крепка — Ковчег</h3>
+<p>В начале, когда любовь между Всевышним и Израилем была крепка, сказано:</p>
+<blockquote>«И буду Я являться тебе там и говорить с тобой из-над крышки Ковчега Завета» <span class="cite">Шемот 25:22</span></blockquote>
+<p>То есть Шхина (Божественное присутствие) пребывала на Ковчеге, и оттуда Всевышний обращался к Моше.</p>
+<p class="meta">Учили в Барайте: высота Ковчега составляла девять тэфахов (ладоней), а крышка — ещё один тэфах. Итого — десять тэфахов. Длина Ковчега была два с половиной локтя. Божественное присутствие проявлялось в таком малом пространстве.</p>
+</section>
+<section class="stage"><span class="k">2</span>
+<h3>Любовь ослабла — Храм Шломо</h3>
+<p>Позже, во времена Шломо, когда любовь ослабла, сказано:</p>
+<blockquote>«А Дом, который построил царь Шломо Всевышнему, был шестьдесят локтей в длину, двадцать — в ширину и тридцать — в высоту» <span class="cite">Млахим I 6:2</span></blockquote>
+<p>То есть Шхина уже не ограничивалась пространством Ковчега, а наполняла весь Храм.</p>
+</section>
+<section class="stage"><span class="k">3</span>
+<h3>Любовь ещё слабее — «Небо — престол Мой»</h3>
+<p>А в конце, когда любовь ещё больше уменьшилась, сказано:</p>
+<blockquote>«Так сказал Всевышний: Небо — престол Мой, а земля — подножие Моё. Какой же дом вы можете построить Мне?» <span class="cite">Йешаяу 66:1</span></blockquote>
+<p>То есть, когда Израиль согрешил, Всевышний уже не ограничивал Своё присутствие даже пространством Храма.</p>
+</section>
+</div>
+
+<h2>Объяснение <span style="font-size:.6em;color:var(--muted);font-weight:400">(по Махаршалу и Махарша)</span></h2>
+<ul>
+<li>В начале, во времена Скинии, Шхина пребывала на Ковчеге.</li>
+<li>Во времена Храма Шломо — уже на всём здании.</li>
+<li>А затем, когда народ согрешил, Шхина покинула даже Храм.</li>
+</ul>
+<div class="key"><p>Этот отрывок иллюстрирует связь между духовным уровнем народа Израиля и присутствием Шхины. Чем больше была любовь и приверженность заповедям, тем в <strong>меньшем пространстве</strong> могла проявляться Божественная суть. Но когда грехи увеличились, даже огромный Храм уже не мог вместить Шхину.</p></div>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Полночь, рыдание о Храме и преодоление лени</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--paper:#fffdf8;--ink:#26232b;--muted:#6d6872;--line:#e6dcc8;--accent:#2d2a6e;--gold:#b8892b;--gold-soft:#f3e7c9;--hl:#fbefc9}
+@media(prefers-color-scheme:dark){:root{--bg:#15141c;--paper:#1d1c27;--ink:#ece8df;--muted:#a29cab;--line:#322f42;--accent:#b9b6ff;--gold:#e0b45a;--gold-soft:#3a3322;--hl:#463c1f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Lora',Georgia,serif;line-height:1.8;font-size:1.12rem;
+ background-image:radial-gradient(circle at 50% -10%,var(--gold-soft),transparent 55%)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 80px}
+header{text-align:center;padding:64px 0 28px}
+.eyebrow{font-family:'Inter',sans-serif;letter-spacing:.18em;font-size:.78rem;color:var(--gold);font-weight:700;text-transform:uppercase}
+h1{font-weight:700;font-size:clamp(2rem,6vw,3.3rem);margin:.3em 0 .3em;color:var(--accent);line-height:1.15}
+.src{display:inline-block;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--muted);border:1px solid var(--line);background:var(--paper);padding:5px 16px;border-radius:999px}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px auto 0;color:var(--gold)}
+.orn:before,.orn:after{content:"";height:1px;width:80px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn:after{transform:scaleX(-1)}
+article{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,5vw,48px);box-shadow:0 1px 2px rgba(60,40,10,.06),0 12px 32px rgba(60,40,10,.07)}
+p{margin:0 0 1.15em}
+strong{background:linear-gradient(transparent 58%,var(--hl) 58%);font-weight:700;color:var(--accent)}
+em{color:var(--accent)}
+.lead{font-size:1.05em}
+blockquote{margin:1.6em 0;padding:18px 22px;border-inline-start:4px solid var(--gold);background:var(--gold-soft);border-radius:0 14px 14px 0;font-size:1.18rem;font-weight:500;color:var(--ink)}
+blockquote strong{background:none;color:inherit}
+.cite{font-family:'Inter',sans-serif;font-size:.82em;color:var(--gold);background:var(--gold-soft);padding:1px 8px;border-radius:8px;white-space:nowrap}
+ul{padding-inline-start:1.3em;margin:0 0 1.15em}li{margin:.4em 0}li::marker{color:var(--gold)}
+blockquote{font-style:italic}
+h2{font-family:'Lora',serif;font-size:1.55rem;color:var(--accent);margin:2.2em 0 .7em;padding-bottom:.35em;border-bottom:2px solid var(--gold-soft);line-height:1.3}
+h2:first-child{margin-top:0}
+h3{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:1.8em 0 .6em;line-height:1.5;font-weight:700}
+ol{padding-inline-start:1.4em;margin:0 0 1.15em}ol li::marker{color:var(--gold);font-weight:700}
+h2:after{content:"";flex:1;height:1px;background:var(--line)}
+.box{border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:0 0 1.15em;background:color-mix(in srgb,var(--paper) 70%,var(--gold-soft))}
+.box p:last-child{margin:0}
+@media print{body{background:#fff}article{box-shadow:none;border:0}}
+.bsd{font-family:"Frank Ruhl Libre",serif;color:var(--gold);font-size:1.1rem;text-align:center;margin-bottom:8px}
+.epi{text-align:center;font-style:italic;font-size:1.25rem;margin:0 0 1.8em;padding-bottom:1.4em;border-bottom:1px solid var(--line)}
+.epi small{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:.8rem;color:var(--gold);letter-spacing:.08em;margin-top:.6em;text-transform:uppercase}
+.he{font-family:'Frank Ruhl Libre',serif;font-size:1.08em;color:var(--accent);font-weight:500}
+h2.comm{font-size:1.25rem}h2.comm:before{content:"❝";color:var(--gold);margin-right:.4em}
+.key{margin:1.6em 0;padding:20px 24px;border-radius:14px;background:var(--gold-soft);border:1px solid var(--gold)}
+.key p{margin:0}
+h2.part{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:0;margin-top:3em;display:flex;align-items:center;gap:12px;font-family:'Inter',sans-serif}
+h2.part:after{content:"";flex:1;height:1px;background:var(--line)}
+h2.num{display:flex;gap:14px;align-items:center}
+h2.num span{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--paper);font-family:'Inter',sans-serif;font-size:.95rem}
+ul{padding-inline-start:1.3em;margin:0 0 1.15em}li{margin:.4em 0}li::marker{color:var(--gold)}
+h1.long{font-size:clamp(1.8rem,5vw,2.6rem)}
+.steps{list-style:none;padding:0;margin:1em 0 1.3em;display:grid;gap:12px;counter-reset:s}
+.steps li{display:flex;gap:16px;align-items:center;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--paper) 70%,var(--gold-soft));margin:0}
+.steps li:before{counter-increment:s;content:counter(s);flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--paper);font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem}
+.video{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid var(--gold);border-radius:14px;background:var(--gold-soft);text-decoration:none;color:var(--accent);font-family:'Inter',sans-serif;font-weight:500;margin-top:1em}
+.video:hover{filter:brightness(.97)}.video .ic{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-size:.9rem}
+.video small{display:block;color:var(--muted);font-weight:400;font-size:.78rem;word-break:break-all}
+.song{padding-top:1.2em;border-top:1px solid var(--line)}
+.pair{display:grid;gap:12px;margin:1em 0 1.3em}
+.pair>div{padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--paper) 70%,var(--gold-soft))}
+.pair b{display:block;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.3em}
+.pair span em{font-style:italic}
+.note-box{margin:1.4em 0;padding:14px 20px;border-inline-start:4px solid var(--gold);border-radius:0 12px 12px 0;background:color-mix(in srgb,var(--paper) 60%,var(--gold-soft));font-size:.98rem;color:var(--muted)}
+.note-box p{margin:0}
+ul.ask{list-style:none;padding:0;display:grid;gap:10px;margin:0 0 1.3em}
+ul.ask li{margin:0;padding:14px 18px 14px 48px;position:relative;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--paper) 70%,var(--gold-soft));font-style:italic}
+ul.ask li:before{content:"?";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--paper);font-family:'Inter',sans-serif;font-style:normal;font-weight:700;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="bsd" lang="he" dir="rtl">בס"ד</div>
+ <div class="eyebrow">Раби Нахман из Бреслова · Хасидизм</div>
+ <h1 class="long">Полночь, рыдание о Храме и преодоление лени</h1>
+ <span class="src">Брахот 3а</span>
+ <div class="orn">✦</div>
+</header>
+<article>
+<p>Раби Нахман из Бреслова учит, что полночь — это особое время, которое человек должен посвятить духовной работе. Согласно Талмуду <span class="cite">Брахот 3а</span>, на каждой из трёх ночных страж Всевышний «сидит и рычит, как лев»:</p>
+<blockquote>«Горе Мне, что Я разрушил Мой Дом (Храм) и изгнал Моих детей среди народов»</blockquote>
+<p>Раби Нахман делает из этого вывод, что именно в эти часы человек может больше всего приблизиться к Богу, <strong>преодолеть свои недостатки и работать над собой</strong>.</p>
+
+<h2>Цитата Раби Нахмана</h2>
+<p>Раби Нахман говорил своим ученикам:</p>
+<blockquote>«Я хотел, чтобы вы были, как животные, рычащие в лесу всю ночь».</blockquote>
+<p>Это выражение означает, что человек должен быть духовно активным и полностью посвящённым работе над собой даже ночью, когда многие отдыхают.</p>
+
+<h2>Цель полуночной работы</h2>
+<p>Раби Нахман подчёркивает важность рыдания о разрушении Храма. Когда человек искренне скорбит о разрушении Иерусалима и о своей личной духовной «разрухе», он как будто участвует в восстановлении Храма. Эти слёзы и молитвы в полночь восстанавливают утраченное чувство <strong>«страха перед Всевышним»</strong>, которое является центральной частью духовной работы.</p>
+
+<h2>Три ночные стражи и три причины духовного разрушения</h2>
+<p>Особенно интересно, что в самой Гемаре <span class="cite">Брахот 3а</span> можно увидеть намёк на три препятствия, которые Раби Нахман связывает с разрушением духовного Иерусалима в сердце человека.</p>
+<p>Гемара описывает три ночные стражи и приводит для каждой из них особые признаки:</p>
+<ol class="steps">
+<li>Первая стража — осёл ревёт.</li>
+<li>Вторая стража — собаки лают.</li>
+<li>Третья стража — младенец сосёт грудь матери, а женщина разговаривает со своим мужем.</li>
+</ol>
+<p>Эти три описания можно рассматривать как духовные намёки на три силы, которые способны разрушить святость сердца человека:</p>
+<div class="pair">
+<div><b>Осёл</b><span>Намёк на материальные желания и жажду богатства. Само слово <span class="he" lang="he" dir="rtl">חמור</span> (<em>хамор</em> — осёл) созвучно слову <span class="he" lang="he" dir="rtl">חומר</span> (<em>хомер</em> — материя). Это напоминает о чрезмерной привязанности к материальному миру и погоне за богатством.</span></div>
+<div><b>Собаки</b><span>Намёк на телесные желания, в частности на чрезмерную жажду еды и удовлетворения физических потребностей.</span></div>
+<div><b>Младенец и разговор с мужем</b><span>Намёк на страсти и чрезмерную привязанность к физической близости, когда человек не умеет направлять свои желания к святости.</span></div>
+</div>
+<p>Таким образом, три ночные стражи могут быть поняты как отражение трёх препятствий, которые ослабляют страх перед Всевышним: <strong>материальной жадности, чрезмерного стремления к еде и физических страстей</strong>.</p>
+<p>Именно поэтому связь между тремя ночными стражами и словами Всевышнего о разрушении Храма приобретает особую глубину: разрушение Храма в материальном мире отражается в разрушении святости внутри человеческого сердца.</p>
+<div class="note-box"><p>Важно отметить, что это духовное истолкование знаков трёх стражей, а не буквальное объяснение, приведённое самой Гемарой.</p></div>
+
+<h2>Три преграды: богатство, еда и страсти</h2>
+<p>Раби Нахман связывает разрушение Храма с тремя преградами в сердце:</p>
+<ol class="steps">
+<li>Жажда богатства, которая наполняет сердце ненужной суетой и отвлекает человека от главного.</li>
+<li>Жажда еды, которая превращает удовлетворение физических потребностей в главную цель жизни.</li>
+<li>Жажда страстей, исходящая из чрезмерного «тепла» в сердце и мешающая человеку сохранять чистоту мыслей и святость.</li>
+</ol>
+<p>Эти три качества разрушают «Иерусалим» в сердце человека, то есть его страх перед Богом.</p>
+
+<h2>Практический вывод</h2>
+<p>Когда человек встаёт в полночь, чтобы скорбеть о разрушении Храма, он должен также заглянуть внутрь себя и спросить:</p>
+<ul class="ask">
+<li>Не стало ли богатство главным смыслом моей жизни?</li>
+<li>Не подчинил ли я свою душу желаниям тела и еде?</li>
+<li>Не управляют ли мной страсти вместо того, чтобы я управлял ими?</li>
+</ul>
+<p><strong>Настоящая полуночная работа — это не только плач о прошлом, но и исправление настоящего.</strong></p>
+<p>Когда человек плачет о разрушении Храма и одновременно старается исправить разрушение в собственном сердце, он приближается к восстановлению святости.</p>
+<p>Ибо каждый человек должен построить свой маленький Иерусалим внутри себя, чтобы удостоиться увидеть восстановление Иерусалима и строительство Третьего Храма в наши дни.</p>
+
+<h2>Заключение</h2>
+<div class="key"><p>Полночь — это время «рычания», духовной работы и очищения. Те, кто использует этот час для молитв, становятся участниками восстановления Храма и возвращения к Богу. Раби Нахман вдохновляет своих учеников не бояться трудностей, а быть духовными «львами», рычащими ночью для достижения истинной связи с Всевышним.</p></div>
+</article>
+</div>
+</body>
+</html>
